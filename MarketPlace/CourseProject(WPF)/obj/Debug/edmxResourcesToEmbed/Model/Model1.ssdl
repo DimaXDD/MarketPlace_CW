@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище NewMarketPlaceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Announcements">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="seller" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="category" Type="nvarchar" MaxLength="50" />
+    <Property Name="about" Type="nvarchar" MaxLength="1000" />
+    <Property Name="cost" Type="money" />
+  </EntityType>
+  <EntityType Name="Regions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TmpAnnouncements">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="seller" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="category" Type="nvarchar" MaxLength="50" />
+    <Property Name="about" Type="nvarchar" MaxLength="1000" />
+    <Property Name="cost" Type="money" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="30" />
+    <Property Name="secondName" Type="nvarchar" MaxLength="30" />
+    <Property Name="mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="telNumber" Type="varchar" MaxLength="20" />
+    <Property Name="about" Type="nvarchar" MaxLength="1000" />
+    <Property Name="image" Type="varbinary(max)" />
+    <Property Name="privilege" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__Announcem__idReg__46E78A0C">
+    <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+    <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Announcements">
+        <PropertyRef Name="idRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Announcem__selle__45F365D3">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Announcements">
+        <PropertyRef Name="seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TmpAnnoun__idReg__4316F928">
+    <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+    <End Role="TmpAnnouncements" Type="Self.TmpAnnouncements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TmpAnnouncements">
+        <PropertyRef Name="idRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TmpAnnoun__selle__4222D4EF">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="TmpAnnouncements" Type="Self.TmpAnnouncements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TmpAnnouncements">
+        <PropertyRef Name="seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище NewMarketPlaceModelContainer">
+    <EntitySet Name="Announcements" EntityType="Self.Announcements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TmpAnnouncements" EntityType="Self.TmpAnnouncements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Announcem__idReg__46E78A0C" Association="Self.FK__Announcem__idReg__46E78A0C">
+      <End Role="Regions" EntitySet="Regions" />
+      <End Role="Announcements" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Announcem__selle__45F365D3" Association="Self.FK__Announcem__selle__45F365D3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Announcements" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TmpAnnoun__idReg__4316F928" Association="Self.FK__TmpAnnoun__idReg__4316F928">
+      <End Role="Regions" EntitySet="Regions" />
+      <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TmpAnnoun__selle__4222D4EF" Association="Self.FK__TmpAnnoun__selle__4222D4EF">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

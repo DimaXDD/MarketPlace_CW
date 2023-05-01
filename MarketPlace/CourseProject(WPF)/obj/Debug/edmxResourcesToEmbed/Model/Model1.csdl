@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewMarketPlaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="seller" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Region" Relationship="Self.FK__Announcem__idReg__46E78A0C" FromRole="Announcements" ToRole="Regions" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Announcem__selle__45F365D3" FromRole="Announcements" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="region1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Announcements" Relationship="Self.FK__Announcem__idReg__46E78A0C" FromRole="Regions" ToRole="Announcements" />
+    <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpAnnoun__idReg__4316F928" FromRole="Regions" ToRole="TmpAnnouncements" />
+  </EntityType>
+  <EntityType Name="TmpAnnouncement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="seller" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Region" Relationship="Self.FK__TmpAnnoun__idReg__4316F928" FromRole="TmpAnnouncements" ToRole="Regions" />
+    <NavigationProperty Name="User" Relationship="Self.FK__TmpAnnoun__selle__4222D4EF" FromRole="TmpAnnouncements" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="secondName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="telNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="about" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="privilege" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Announcements" Relationship="Self.FK__Announcem__selle__45F365D3" FromRole="Users" ToRole="Announcements" />
+    <NavigationProperty Name="TmpAnnouncements" Relationship="Self.FK__TmpAnnoun__selle__4222D4EF" FromRole="Users" ToRole="TmpAnnouncements" />
+  </EntityType>
+  <Association Name="FK__Announcem__idReg__46E78A0C">
+    <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="Announcements" Type="Self.Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Announcements">
+        <PropertyRef Name="idRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Announcem__selle__45F365D3">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Announcements" Type="Self.Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Announcements">
+        <PropertyRef Name="seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TmpAnnoun__idReg__4316F928">
+    <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+    <End Role="TmpAnnouncements" Type="Self.TmpAnnouncement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TmpAnnouncements">
+        <PropertyRef Name="idRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TmpAnnoun__selle__4222D4EF">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="TmpAnnouncements" Type="Self.TmpAnnouncement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TmpAnnouncements">
+        <PropertyRef Name="seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewMarketPlaceEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Announcements" EntityType="Self.Announcement" />
+    <EntitySet Name="Regions" EntityType="Self.Region" />
+    <EntitySet Name="TmpAnnouncements" EntityType="Self.TmpAnnouncement" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Announcem__idReg__46E78A0C" Association="Self.FK__Announcem__idReg__46E78A0C">
+      <End Role="Regions" EntitySet="Regions" />
+      <End Role="Announcements" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Announcem__selle__45F365D3" Association="Self.FK__Announcem__selle__45F365D3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Announcements" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TmpAnnoun__idReg__4316F928" Association="Self.FK__TmpAnnoun__idReg__4316F928">
+      <End Role="Regions" EntitySet="Regions" />
+      <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TmpAnnoun__selle__4222D4EF" Association="Self.FK__TmpAnnoun__selle__4222D4EF">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TmpAnnouncements" EntitySet="TmpAnnouncements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
