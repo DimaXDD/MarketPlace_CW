@@ -16,7 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Net.Mail;
+using System.Net;
 namespace CourseProject_WPF_.View
 {
     
@@ -36,7 +37,7 @@ namespace CourseProject_WPF_.View
         
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            adminPageViewModel.accept();            
+            adminPageViewModel.accept();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
@@ -78,7 +79,6 @@ namespace CourseProject_WPF_.View
             NoButton.Content = "Отклонить";
             infoButton.Visibility = Visibility.Visible;
             OkButton.IsEnabled = true;
-            
         }        
     }
 }

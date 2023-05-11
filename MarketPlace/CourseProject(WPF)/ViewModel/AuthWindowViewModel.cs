@@ -84,12 +84,6 @@ namespace CourseProject_WPF_.ViewModel
             
         }
 
-        public void InstaLogin()
-        {
-            InstagramWindow instagramWindow = new InstagramWindow();
-            instagramWindow.ShowDialog();
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string propertyName)

@@ -76,11 +76,6 @@ namespace CourseProject_WPF_.View
         {
             authWindowViewModel.VkLogin();
         }
-
-        private void instagramButton_Click(object sender, RoutedEventArgs e)
-        {
-            authWindowViewModel.InstaLogin();
-        }
        
     }
 }

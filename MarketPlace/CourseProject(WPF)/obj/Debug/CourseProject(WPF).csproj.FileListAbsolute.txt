@@ -11,7 +11,6 @@ E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\Google.Apis.D
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\Google.Apis.dll
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\Google.Apis.PlatformServices.dll
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\HtmlAgilityPack.dll
-E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\InstagramApiSharp.dll
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\MahApps.Metro.dll
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\MaterialDesignColors.dll
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\bin\Debug\MaterialDesignThemes.Wpf.dll
@@ -82,7 +81,6 @@ E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\AuthWind
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\DialogWindow.g.cs
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\EditWindow.g.cs
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\Enter.g.cs
-E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\InstagramWindow.g.cs
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\MainWindow.g.cs
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\MyAnnouncementPage.g.cs
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\PersonAreaPage.g.cs
@@ -105,7 +103,6 @@ E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\AuthWind
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\DialogWindow.baml
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\EditWindow.baml
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\Enter.baml
-E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\InstagramWindow.baml
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\MainWindow.baml
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\MyAnnouncementPage.baml
 E:\КурсовойООП\MarketPlace\CourseProject(WPF)\obj\Debug\View\PersonAreaPage.baml

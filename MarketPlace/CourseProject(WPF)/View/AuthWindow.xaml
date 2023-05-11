@@ -27,7 +27,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-
+            <Image x:Name="logoAuth" Source="E:\КурсовойООП\MarketPlace\CourseProject(WPF)\Images\AuthLogo.png" />
         </Grid>
 
         <Grid Grid.Row="2">
@@ -45,18 +45,14 @@
         </Grid>
 
         <Grid Grid.Row="4" >
-            <Button Height="30" Width="60" Background="{x:Null}" BorderThickness="0" Foreground="Gray" Click="VkButton_Click" Margin="300,0,0,0">
-                <materialDesign:PackIcon Kind="Vk" Height="25" Width="25"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Button>
-            <Button Height="30" Width="60" Background="{x:Null}" BorderThickness="0" Foreground="Gray" Click="instagramButton_Click" Margin="0,0,300,0">
-                <materialDesign:PackIcon Kind="Instagram" Height="25" Width="25"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Button>
             <Button Content="Войти" Margin="0,10,0,0" Click="authButton_Click" Style="{DynamicResource AuthButtonStyle}"/>
             <Button Content="Регистрация"  Click="regButton_Click" Style="{DynamicResource RegistrationButtonStyle}"/>
         </Grid>
 
         <Grid Grid.Row="5">
-            
+            <Button Height="30" Width="60" Background="{x:Null}" BorderThickness="0" Foreground="Gray" Click="VkButton_Click">
+                <materialDesign:PackIcon Kind="Vk" Height="25" Width="25"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
             <TextBlock Text="{Binding Info}" Foreground="PaleVioletRed" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="18"/>
         </Grid>
     </Grid>

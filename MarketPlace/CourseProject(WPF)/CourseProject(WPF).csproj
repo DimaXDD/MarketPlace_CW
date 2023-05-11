@@ -73,9 +73,6 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.46.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.46\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="InstagramApiSharp, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\InstagramApiSharp.1.4.0\lib\net452\InstagramApiSharp.dll</HintPath>
-    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -257,8 +254,6 @@
     </Compile>
     <Compile Include="ViewModel\AllAnnouncementViewModel.cs" />
     <Compile Include="ViewModel\EditWindowViewModel.cs" />
-    <Compile Include="ViewModel\Instagram\InstagramLoginViewModel.cs" />
-    <Compile Include="ViewModel\Instagram\InstaLogin.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MyAnnouncementPageViewModel.cs" />
     <Compile Include="ViewModel\PersonAreaViewModel.cs" />
@@ -288,9 +283,6 @@
     </Compile>
     <Compile Include="View\Enter.xaml.cs">
       <DependentUpon>Enter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\InstagramWindow.xaml.cs">
-      <DependentUpon>InstagramWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -362,10 +354,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Enter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\InstagramWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
