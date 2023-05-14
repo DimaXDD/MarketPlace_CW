@@ -146,9 +146,11 @@ namespace CourseProject_WPF_.Model
         public override string ToString()
         {
             return $"{firstName} {secondName}\n" +
-                    $"mail: {mail}\n" +
-                    $"privelege: {privilege}\n";
+                   $"mail: {mail}\n" +
+                   $"telNumber: {telNumber}\n" +
+                   $"privelege: {privilege}\n";
         }
+
 
         public string getName()
         {

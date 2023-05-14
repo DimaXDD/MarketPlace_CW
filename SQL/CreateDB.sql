@@ -10,43 +10,43 @@ use CW_MarketPlace_OOP
 create table Users
 (
 	id int primary key identity(1,1),
-	firstName nvarchar(30),
-	secondName nvarchar(30),
-	mail nvarchar(50),
-	password nvarchar(100),
+	firstName nvarchar(30) not null,
+	secondName nvarchar(30) not null,
+	mail nvarchar(50) not null,
+	password nvarchar(100) not null,
 	telNumber varchar(20),
-	about nvarchar(1000),
+	about nvarchar(1000) not null,
 	image varbinary(MAX),
-	privilege nvarchar(5) default 'user'
+	privilege nvarchar(10) default 'user' not null
 );
 
 create table Regions
 (
 	id int primary key identity(0,1),
-	region nvarchar(50)
+	region nvarchar(50) not null
 );
 
 create table TmpAnnouncements
 (
 	id int primary key identity(1,1),
-	name nvarchar(50),
+	name nvarchar(50) not null,
 	seller int foreign key references Users(id),
 	idRegion int foreign key references Regions(id),
-	category nvarchar(50),
-	about nvarchar(1000),
-	cost money
+	category nvarchar(50) not null,
+	about nvarchar(1000) not null,
+	cost money not null
 );
 
 
 create table Announcements
 (
 	id int primary key identity(1,1),
-	name nvarchar(50),
-	seller int foreign key references Users(id),
-	idRegion int foreign key references Regions(id),
-	category nvarchar(50),
-	about nvarchar(1000),
-	cost money
+	name nvarchar(50) not null,
+	seller int foreign key references Users(id) not null,
+	idRegion int foreign key references Regions(id) not null,
+	category nvarchar(50) not null,
+	about nvarchar(1000) not null,
+	cost money not null
 );
 
 insert into Regions (region) values('Все');

@@ -163,6 +163,7 @@ namespace CourseProject_WPF_.ViewModel
                     {
                         byte[] image = new byte[fs.Length];
                         fs.Read(image, 0, image.Length);
+                        CurrentUser.User.image = image; // вот оно, решение всей проблемы :) :) :)
                         userRepository.update(user, new User(CurrentUser.User.FirstName, CurrentUser.User.SecondName, CurrentUser.User.Mail, CurrentUser.User.TelNumber, CurrentUser.User.About, image));
                         BitmapImage = LoadPhoto(user.id);
                     }
@@ -174,14 +175,15 @@ namespace CourseProject_WPF_.ViewModel
 
         public void changeDataOfUser()
         {
-            User tmp = new User(FirstName, SecondName, Mail, TelNumber, About,CurrentUser.User.image, user.privilege);
+            User tmp = new User(FirstName, SecondName, Mail, TelNumber, About, CurrentUser.User.image, user.privilege);
             userRepository.update(user, tmp);
             CurrentUser.User = userRepository.getByMail(Mail);
 
             AlertWindow alertWindow = new AlertWindow($"Изменения сохранены\nДля входа используйте новый Mail - {Mail}");
             alertWindow.ShowDialog();
         }
-            
+
+
 
         public void deleteUser()
         {
