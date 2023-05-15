@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CourseProject_WPF_.ViewModel;
 using CourseProject_WPF_.Model;
+using System.Text.RegularExpressions;
 
 namespace CourseProject_WPF_.View
 {
@@ -76,10 +77,13 @@ namespace CourseProject_WPF_.View
 
         private void mailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(mailTextBox.Text))
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+
+            if (!String.IsNullOrEmpty(mailTextBox.Text) && regex.IsMatch(mailTextBox.Text))
                 mailTextBox.BorderBrush = Brushes.LimeGreen;
             else
                 mailTextBox.BorderBrush = Brushes.DarkRed;
+
             compare();
         }
 
@@ -130,7 +134,8 @@ namespace CourseProject_WPF_.View
                 !String.IsNullOrEmpty(pass1NameTextBox.Password) &&
                 !String.IsNullOrEmpty(firstNameTextBox.Text) &&
                 !String.IsNullOrEmpty(secondNameTextBox.Text) &&
-                !String.IsNullOrEmpty(mailTextBox.Text))
+                !String.IsNullOrEmpty(mailTextBox.Text) &&
+                Regex.IsMatch(mailTextBox.Text, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"))
             {               
                 registrationButton.IsEnabled = true;
             }

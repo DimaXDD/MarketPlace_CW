@@ -49,16 +49,22 @@ namespace CourseProject_WPF_.ViewModel
         {
             try
             {
-                Status = "Подождите нексолько секунд";
+                if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(password))
+                {
+                    Status = "Пустое(-ые) поле(-я)";
+                    return false;
+                }
+
+                Status = "Подождите несколько секунд";
                 Vk vk = new Vk(Login, password, Code);
-                VkNet.Model.User user = vk.getUser();                
+                VkNet.Model.User user = vk.getUser();
 
                 string firstName = "";
                 string lastName = "";
                 string telNumber = "";
                 string about = "";
                 byte[] image;
-                string i="";
+                string i = "";
 
                 if (userRepository.getByMail(Login) != null)
                 {
@@ -90,8 +96,8 @@ namespace CourseProject_WPF_.ViewModel
                 {
                     firstName = user.FirstName;
                     lastName = user.LastName;
-                    telNumber = "";                    
-                    about = $"Страна: {user.Country.Title}\n"+ $"Город: {user.City.Title}";
+                    telNumber = "";
+                    about = $"Страна: {user.Country.Title}\n" + $"Город: {user.City.Title}";
                     using (WebClient client = new WebClient())
                     {
                         client.DownloadFile(new Uri(user.Photo200Orig.AbsoluteUri), User.filename);
@@ -102,7 +108,7 @@ namespace CourseProject_WPF_.ViewModel
                         fs.Read(image, 0, image.Length);
                     }
 
-                    userRepository.add(new Model.User(firstName, lastName, Login, telNumber,about,image));
+                    userRepository.add(new Model.User(firstName, lastName, Login, telNumber, about, image));
                     CurrentUser.User = userRepository.getByMail(Login);
 
                     App.authWindow.Close();
@@ -110,15 +116,15 @@ namespace CourseProject_WPF_.ViewModel
                     App.mainWindow.Show();
                     image = null;
                     return true;
-                    
+
                 }
 
             }
             catch (VkNet.Exception.UserAuthorizationFailException)
             {
-                Status = "Введите код подверждения и повторите вход";
+                Status = "Введите код подтверждения и повторите вход";
             }
-            catch (VkNet.Exception.VkApiException)
+            catch (VkNet.Exception.VkAuthorizationException)
             {
                 Status = "Неверно указан логин или пароль";
             }
@@ -128,6 +134,7 @@ namespace CourseProject_WPF_.ViewModel
             }
             return false;
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

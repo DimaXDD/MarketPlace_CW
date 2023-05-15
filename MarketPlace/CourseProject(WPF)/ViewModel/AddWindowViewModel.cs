@@ -21,7 +21,7 @@ namespace CourseProject_WPF_.ViewModel
         string info;
 
         string statusName = "Не заполнено название";
-        string statusCategory = "Не заполнено категория";
+        string statusCategory = "Не заполнена категория";
         string statusCost = "Не заполнена цена";
         string statusAbout = "Не заполнено описание";
 
@@ -33,13 +33,13 @@ namespace CourseProject_WPF_.ViewModel
             get { return name; }
             set
             {
-                if (value.Length >= 5 && value.Length < 50)
+                if (value.Length >= 5 && value.Length <= 50)
                 {
                     name = value;
                     statusName = "";
                 }
-                else
-                    statusName = "Название слишком коротокое";
+                else if (value.Length > 50) statusName = "Название слишком длинное";
+                else statusName = "Название слишком короткое";
 
                 OnPropertyChanged("Name");
             }
@@ -55,7 +55,7 @@ namespace CourseProject_WPF_.ViewModel
                     statusCategory = "";
                 }
                 else
-                    statusCategory = "Првоерьте категорию";
+                    statusCategory = "Проверьте категорию";
                 OnPropertyChanged("Category");
             }
         }
@@ -97,7 +97,7 @@ namespace CourseProject_WPF_.ViewModel
                 }
                 else
                 {
-                    statusCost = "Некорректно задана цена)";
+                    statusCost = "Некорректно задана цена";
                     cost = 0;
                 }
                 OnPropertyChanged("Cost");
@@ -137,14 +137,14 @@ namespace CourseProject_WPF_.ViewModel
                 Info = statusName;
                 return false;
             }
-            else if (!String.IsNullOrEmpty(statusCost))
-            {
-                Info = statusCost;
-                return false;
-            }
             else if (!String.IsNullOrEmpty(statusCategory))
             {
                 Info = statusCategory;
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(statusCost))
+            {
+                Info = statusCost;
                 return false;
             }
             else if (!String.IsNullOrEmpty(statusAbout))
