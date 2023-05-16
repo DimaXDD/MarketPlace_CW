@@ -1,11 +1,6 @@
-﻿--drop database CW_MarketPlace_OOP;
---create database CW_MarketPlace_OOP;
-use CW_MarketPlace_OOP
+﻿create database CW_MarketPlace_OOP;
 
---drop table Users;
---drop table Regions
---drop table TmpAnnouncements
---drop table Announcements
+use CW_MarketPlace_OOP
 
 create table Users
 (
@@ -59,4 +54,4 @@ insert into Regions (region) values('Могилёвская');
 insert into Regions (region) values('Минск');
 
 insert into Users (firstName, secondName, mail, password, telNumber, about, privilege)
-	values ('admin', 'admin', 'ForTestAdm@yandex.ru', 'ISMvKXpXpadDiUoOSoAfww==', '+375296788640', 'Admin from database', 'admin');
+	values ('admin', 'admin', 'ForTestAdm1@gmail.com', 'ISMvKXpXpadDiUoOSoAfww==', '+375291234567', 'Admin from database', 'admin');

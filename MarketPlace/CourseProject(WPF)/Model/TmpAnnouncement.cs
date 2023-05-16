@@ -87,5 +87,13 @@ namespace CourseProject_WPF_.Model
         {
             get { return $"Название - {Name}\nКатегория -  {Category}\nЦена - {Cost}\n"; }
         }
+
+        public ViewModel.AllAnnouncementViewModel AllAnnouncementViewModel
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
