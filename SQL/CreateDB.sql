@@ -8,7 +8,7 @@ create table Users
 	firstName nvarchar(30) not null,
 	secondName nvarchar(30) not null,
 	mail nvarchar(50) not null,
-	password nvarchar(100) not null,
+	password nvarchar(100) null,
 	telNumber varchar(20),
 	about nvarchar(1000) not null,
 	image varbinary(MAX),
